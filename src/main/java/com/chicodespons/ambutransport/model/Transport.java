@@ -13,23 +13,6 @@ public class Transport {
     private long interventionNumber;
     private LocalDate interventionDate;
     private LocalDate registrationDate;
-    @OneToOne
-    private Trajectory trajectory;
-    private TransportTeam transportTeam;
-    private Patient patient;
-    private TransportAssessment transportAssessment;
-    private HealthCondition healthCondition;
-
-    public Transport(long interventionNumber, LocalDate interventionDate, Trajectory trajectory, TransportTeam transportTeam, Patient patient, TransportAssessment transportAssessment, HealthCondition healthCondition) {
-        this.interventionNumber = interventionNumber;
-        this.interventionDate = interventionDate;
-        this.registrationDate = LocalDate.now();
-        this.trajectory = trajectory;
-        this.transportTeam = transportTeam;
-        this.patient = patient;
-        this.transportAssessment = transportAssessment;
-        this.healthCondition = healthCondition;
-    }
 
     public Transport() {
 
