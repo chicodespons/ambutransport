@@ -1,5 +1,6 @@
-package com.chicodespons.ambutransport.model;
+package com.chicodespons.ambutransport.model.transportteam;
 
+import com.chicodespons.ambutransport.model.Transport;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,11 +13,11 @@ public class TransportTeam {
     @OneToOne
     private Transport transport;
     @ManyToOne
-    private User transportOrganizer;
+    private TeamMember transportOrganizer;
     @ManyToOne
-    private User patientResponsible;
+    private TeamMember patientResponsible;
     @ManyToOne
-    private User ambulanceDriver;
+    private TeamMember ambulanceDriver;
     private String expert;
     private String additionalPeople;
     private String partner;
