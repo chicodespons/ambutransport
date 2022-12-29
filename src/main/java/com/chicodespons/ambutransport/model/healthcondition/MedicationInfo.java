@@ -12,6 +12,7 @@ public class MedicationInfo {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "medication_info_seq")
     private Long id;
     @ManyToOne
+    @JoinColumn(name = "medication_id")
     private Medication medication;
     private String dose;
     private Route route;

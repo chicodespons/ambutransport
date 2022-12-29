@@ -12,6 +12,7 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "patient_seq")
     private Long id;
     @OneToMany
+    @JoinColumn(name = "patient_id")
     private List<Transport> transports;
     private String firstName;
     private String lastName;

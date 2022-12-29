@@ -13,10 +13,13 @@ public class TransportTeam {
     @OneToOne
     private Transport transport;
     @ManyToOne
+    @JoinColumn(name = "transport_organizer_id")
     private TeamMember transportOrganizer;
     @ManyToOne
+    @JoinColumn(name = "patient_responsible_id")
     private TeamMember patientResponsible;
     @ManyToOne
+    @JoinColumn(name = "ambulance_driver_id")
     private TeamMember ambulanceDriver;
     private String expert;
     private String additionalPeople;

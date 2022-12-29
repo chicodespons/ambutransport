@@ -14,8 +14,10 @@ public class Trajectory {
     @OneToOne
     private Transport transport;
     @ManyToOne
+    @JoinColumn(name = "referrer_id")
     private ExternalContact referrer;
     @ManyToOne
+    @JoinColumn(name = "receiver_id")
     private ExternalContact receiver;
     @Enumerated(EnumType.STRING)
     private Direction direction;
