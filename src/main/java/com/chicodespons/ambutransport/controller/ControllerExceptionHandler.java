@@ -1,5 +1,7 @@
 package com.chicodespons.ambutransport.controller;
+import com.chicodespons.ambutransport.exceptions.CantDeleteTransportException;
 import com.chicodespons.ambutransport.exceptions.InvalidTeamMemberException;
+import com.chicodespons.ambutransport.exceptions.UnvalidTransportIdException;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,16 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(InvalidTeamMemberException.class)
     protected void invalidTeamMemberException(InvalidTeamMemberException ex, HttpServletResponse response) throws IOException {
         response.sendError(BAD_REQUEST.value(),ex.getMessage());
+    }
+
+    @ExceptionHandler(UnvalidTransportIdException.class)
+    protected void unvalidTransportIdException(UnvalidTransportIdException ex, HttpServletResponse response) throws IOException {
+        response.sendError(BAD_REQUEST.value(), ex.getMessage());
+    }
+
+    @ExceptionHandler(CantDeleteTransportException.class)
+    protected void cantDeleteTransportException(CantDeleteTransportException ex, HttpServletResponse response) throws IOException {
+        response.sendError(BAD_REQUEST.value(), ex.getMessage());
     }
 
     @ExceptionHandler

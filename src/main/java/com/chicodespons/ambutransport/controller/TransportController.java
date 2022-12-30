@@ -3,6 +3,7 @@ package com.chicodespons.ambutransport.controller;
 import com.chicodespons.ambutransport.dto.CreateTransportDto;
 import com.chicodespons.ambutransport.dto.TransportDto;
 import com.chicodespons.ambutransport.dto.UpdateTransportDto;
+import com.chicodespons.ambutransport.exceptions.CantDeleteTransportException;
 import com.chicodespons.ambutransport.exceptions.InvalidTeamMemberException;
 import com.chicodespons.ambutransport.exceptions.UnvalidTransportIdException;
 import com.chicodespons.ambutransport.service.TransportService;
@@ -76,6 +77,14 @@ public class TransportController {
     public UpdateTransportDto updateTransport(@PathVariable long id,@RequestBody UpdateTransportDto updateTransportDto) throws UnvalidTransportIdException {
         return transportService.updateTransport(id, updateTransportDto);
     }
+
+    //DeletTransport
+    //User can only delete a transport that is not final yet, so dat does not yet have a missionnummber
+    @DeleteMapping(path = "/{id}")
+    public void deleteTransport(@PathVariable long id) throws UnvalidTransportIdException, CantDeleteTransportException {
+        transportService.deleteTransport(id);
+    }
+
 
 
 

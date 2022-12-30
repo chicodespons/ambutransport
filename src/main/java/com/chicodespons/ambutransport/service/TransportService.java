@@ -3,6 +3,7 @@ package com.chicodespons.ambutransport.service;
 import com.chicodespons.ambutransport.dto.CreateTransportDto;
 import com.chicodespons.ambutransport.dto.TransportDto;
 import com.chicodespons.ambutransport.dto.UpdateTransportDto;
+import com.chicodespons.ambutransport.exceptions.CantDeleteTransportException;
 import com.chicodespons.ambutransport.exceptions.InvalidTeamMemberException;
 import com.chicodespons.ambutransport.exceptions.UnvalidTransportIdException;
 import com.chicodespons.ambutransport.mapper.TransportMapper;
@@ -92,4 +93,13 @@ public class TransportService {
 
     }
 
+    public void deleteTransport(long id) throws UnvalidTransportIdException, CantDeleteTransportException {
+        Transport transport = transportRepository.findById(id).orElseThrow(()->new UnvalidTransportIdException("Transport for given id is not found"));
+        if (transport.getMissionNumber()== 0){
+            transportRepository.deleteById(id);
+        } else{
+            throw new CantDeleteTransportException("The transport for given id can't be deleted because it's final");
+        }
+
+    }
 }
