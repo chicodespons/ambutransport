@@ -2,22 +2,28 @@ package com.chicodespons.ambutransport.model;
 
 import com.chicodespons.ambutransport.model.trajectory.Trajectory;
 import com.chicodespons.ambutransport.model.transportteam.TeamMember;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Objects;
+
 @Entity
 public class Transport {
     @Id
     @SequenceGenerator(name="transport_seq", sequenceName = "transport_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transport_seq")
-    private Long id;
-    private Long missionNumber;
-    private Long interventionNumber;
+    private long id;
+
+    private long missionNumber;
+
+    private long interventionNumber;
+
     private LocalDate interventionDate;
     private LocalDate registrationDate;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_member_id")
     private TeamMember teamMember;
 
@@ -25,14 +31,14 @@ public class Transport {
 
     }
 
-    public Transport(Long interventionNumber, LocalDate interventionDate, LocalDate registrationDate, TeamMember teamMember) {
+    public Transport(long interventionNumber, LocalDate interventionDate, LocalDate registrationDate, TeamMember teamMember) {
         this.interventionNumber = interventionNumber;
         this.interventionDate = interventionDate;
         this.registrationDate = registrationDate;
         this.teamMember = teamMember;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -40,7 +46,7 @@ public class Transport {
         this.id = id;
     }
 
-    public Long getMissionNumber() {
+    public long getMissionNumber() {
         return missionNumber;
     }
 
@@ -48,7 +54,7 @@ public class Transport {
         this.missionNumber = missionNumber;
     }
 
-    public Long getInterventionNumber() {
+    public long getInterventionNumber() {
         return interventionNumber;
     }
 
@@ -78,5 +84,17 @@ public class Transport {
 
     public void setTeamMember(TeamMember teamMember) {
         this.teamMember = teamMember;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transport transport)) return false;
+        return id == transport.id && missionNumber == transport.missionNumber && interventionNumber == transport.interventionNumber && Objects.equals(interventionDate, transport.interventionDate) && Objects.equals(registrationDate, transport.registrationDate) && Objects.equals(teamMember, transport.teamMember);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, missionNumber, interventionNumber, interventionDate, registrationDate, teamMember);
     }
 }

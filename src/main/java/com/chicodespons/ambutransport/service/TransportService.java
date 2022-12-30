@@ -33,7 +33,7 @@ public class TransportService {
     public List<TransportDto> getAllFinalTransports() {
 
         List<Transport> transports = transportRepository.findAll().stream()
-                .filter(transport -> transport.getMissionNumber() != null || transport.getMissionNumber() != 0)
+                .filter(transport -> transport.getMissionNumber() != 0)
                 .toList();
         return transportMapper.mapTranportToTransportDto(transports);
     }

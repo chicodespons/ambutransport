@@ -34,28 +34,28 @@ public class TransportController {
         return transportService.getAllFinalTransports();
     }
     //these are final transports because only a final transport gets a missionNumber
-    @GetMapping(path = "mission/{missionNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/mission/{missionNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TransportDto getTransportByMissionNumber(@PathVariable Long missionNumber){
         return transportService.getTransportByMissionNumber(missionNumber);
     }
 
 
-    @GetMapping(path = "intervention/{interventionNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/intervention_number/{interventionNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TransportDto getTransportByInterventionNumber(@PathVariable Long interventionNumber){
         return transportService.getTransportByInterventionNumber(interventionNumber);
     }
 
-    @GetMapping(path = "intervention/{interventionDate}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/intervention/{interventionDate}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TransportDto> getTransportsByInterventionDate(@PathVariable LocalDate interventionDate){
         return transportService.getTransportByInterventionDate(interventionDate);
     }
 
-    @GetMapping(path = "registration/{registrationDate}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/registration/{registrationDate}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TransportDto> getTransportsByRegistrationDate(@PathVariable LocalDate registrationDate){
         return transportService.getTransportByRegistrationDate(registrationDate);
     }
 
-    @GetMapping(path = "teammember/{teamMemberId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/teammember/{teamMemberId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TransportDto> getTransportsByTeamMemberId(@PathVariable Long teamMemberId){
         return transportService.getTransportByTeamMemberId(teamMemberId);
     }
@@ -66,6 +66,8 @@ public class TransportController {
     public CreateTransportDto createTransport(@Valid @RequestBody CreateTransportDto createTransportDto) throws InvalidTeamMemberException {
         return transportService.createTransport(createTransportDto);
     }
+
+    //UpdateMappings
 
 
 

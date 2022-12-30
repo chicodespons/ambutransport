@@ -3,9 +3,14 @@ package com.chicodespons.ambutransport.dto;
 import com.chicodespons.ambutransport.model.transportteam.TeamMember;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
-
+@Getter
+@Setter
+@EqualsAndHashCode
 public class TransportDto {
 
     private Long id;
