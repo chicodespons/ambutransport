@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>a5e460f7-c70f-46e0-acfc-776c95ef80ab.SCHEMA:pat_data.pat_schema</OriginalElement>
+  <nodes>
+    <node x="-138.14891410289027" y="588.8091515969659">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.trajectory</node>
+    <node x="326.0514791383789" y="-148.06422989274836">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.address</node>
+    <node x="1044.6495740591145" y="632.0866290960075">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.medication</node>
+    <node x="907.809682834664" y="857.8248799240262">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.medication_info</node>
+    <node x="786.1239266292101" y="568.5684972786955">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport_team</node>
+    <node x="74.5281080766323" y="911.0218357222126">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.vital_parameters</node>
+    <node x="367.48387209121313" y="575.5357613955315">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport_assessment</node>
+    <node x="583.8398016035977" y="390.61796645895413">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.team_member_team_member_roles</node>
+    <node x="310.4305425700728" y="78.75491674034325">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.patient</node>
+    <node x="141.68261202956964" y="574.911503461268">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.health_condition</node>
+    <node x="-97.37247415398339" y="324.3100493644944">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.external_contact</node>
+    <node x="803.0031770592518" y="163.94287637306658">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.team_member</node>
+    <node x="341.3888349986495" y="326.75934113423017">a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.trajectory" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.external_contact" relationship="REFERENCES">
+      <point x="-15.000085897109727" y="-105.0" />
+      <point x="-40.77652584601661" y="94.0" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.health_condition" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport" relationship="REFERENCES">
+      <point x="3.879704303528797E-4" y="-137.99950346126803" />
+      <point x="223.183" y="542.0" />
+      <point x="432.389" y="542.0" />
+      <point x="1.650013505241077E-4" y="93.99965886576985" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport_assessment" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport" relationship="REFERENCES">
+      <point x="1.279087868510942E-4" y="-148.9997613955315" />
+      <point x="466.984" y="542.0" />
+      <point x="432.389" y="542.0" />
+      <point x="1.650013505241077E-4" y="93.99965886576985" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.patient" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.address" relationship="REFERENCES">
+      <point x="-14.879063431693908" y="-94.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport_team" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.team_member" relationship="REFERENCES">
+      <point x="15.000073370789892" y="-105.0" />
+      <point x="19.120822940748212" y="61.0" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.medication_info" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.health_condition" relationship="REFERENCES">
+      <point x="-113.4996828346641" y="1.2007597388219438E-4" />
+      <point x="468.0" y="951.825" />
+      <point x="468.0" y="893.0" />
+      <point x="223.183" y="893.0" />
+      <point x="3.879704303528797E-4" y="138.00049653873202" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.team_member" relationship="REFERENCES">
+      <point x="1.650013505241077E-4" y="-94.00034113423018" />
+      <point x="432.389" y="307.0" />
+      <point x="881.003" y="307.0" />
+      <point x="-1.770592517686964E-4" y="61.00012362693343" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.vital_parameters" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.health_condition" relationship="REFERENCES">
+      <point x="-1.0807663230139042E-4" y="-126.99983572221254" />
+      <point x="179.028" y="893.0" />
+      <point x="223.183" y="893.0" />
+      <point x="3.879704303528797E-4" y="138.00049653873202" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.medication_info" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.medication" relationship="REFERENCES">
+      <point x="87.83989122445041" y="-94.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport_team" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport" relationship="REFERENCES">
+      <point x="7.337078989166912E-5" y="-105.00049727869555" />
+      <point x="885.124" y="542.0" />
+      <point x="432.389" y="542.0" />
+      <point x="1.650013505241077E-4" y="93.99965886576985" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.trajectory" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport" relationship="REFERENCES">
+      <point x="-8.589710972728426E-5" y="-105.00015159696585" />
+      <point x="-28.649" y="542.0" />
+      <point x="432.389" y="542.0" />
+      <point x="1.650013505241077E-4" y="93.99965886576985" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.team_member_team_member_roles" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.team_member" relationship="REFERENCES">
+      <point x="1.9839640231111844E-4" y="-37.999966458954134" />
+      <point x="722.84" y="307.0" />
+      <point x="881.003" y="307.0" />
+      <point x="-1.770592517686964E-4" y="61.00012362693343" />
+    </edge>
+    <edge source="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.transport" target="a5e460f7-c70f-46e0-acfc-776c95ef80ab.TABLE:pat_data.pat_schema.patient" relationship="REFERENCES">
+      <point x="-14.999834998649476" y="-94.0" />
+      <point x="-6.5415425700728065" y="94.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.64" showDependencies="false" x="483.4687500000001" y="577.6875" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
