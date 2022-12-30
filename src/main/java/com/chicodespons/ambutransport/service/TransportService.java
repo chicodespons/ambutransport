@@ -1,6 +1,8 @@
 package com.chicodespons.ambutransport.service;
 
+import com.chicodespons.ambutransport.dto.CreateTransportDto;
 import com.chicodespons.ambutransport.dto.TransportDto;
+import com.chicodespons.ambutransport.exceptions.InvalidTeamMemberException;
 import com.chicodespons.ambutransport.mapper.TransportMapper;
 import com.chicodespons.ambutransport.model.Transport;
 import com.chicodespons.ambutransport.repository.TransportRepository;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TransportService {
@@ -25,6 +28,14 @@ public class TransportService {
         List<Transport> transports = transportRepository.findAll();
         return transportMapper.mapTranportToTransportDto(transports);
 
+    }
+
+    public List<TransportDto> getAllFinalTransports() {
+
+        List<Transport> transports = transportRepository.findAll().stream()
+                .filter(transport -> transport.getMissionNumber() != null || transport.getMissionNumber() != 0)
+                .toList();
+        return transportMapper.mapTranportToTransportDto(transports);
     }
 
     public TransportDto getTransportByMissionNumber(Long missionNumber) {
@@ -56,5 +67,12 @@ public class TransportService {
 
         List<Transport> transports = transportRepository.findAllByTeamMemberId(teamMemberId);
         return transportMapper.mapTranportToTransportDto(transports);
+    }
+
+
+    public CreateTransportDto createTransport(CreateTransportDto createTransportDto) throws InvalidTeamMemberException {
+        Transport transport = transportMapper.mapCreateTransportDtotoTransport(createTransportDto);
+        transportRepository.save(transport);
+        return createTransportDto;
     }
 }

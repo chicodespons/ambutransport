@@ -8,14 +8,14 @@ import java.time.LocalDate;
 
 public class TransportDto {
 
-    private long id;
-    private long missionNumber;
-    private long interventionNumber;
+    private Long id;
+    private Long missionNumber;
+    private Long interventionNumber;
     private LocalDate interventionDate;
     private LocalDate registrationDate;
     private TeamMember teamMember;
 
-    public TransportDto(long id, long missionNumber, long interventionNumber, LocalDate interventionDate, LocalDate registrationDate, TeamMember teamMember) {
+    public TransportDto(Long id, Long missionNumber, Long interventionNumber, LocalDate interventionDate, LocalDate registrationDate, TeamMember teamMember) {
         this.id = id;
         this.missionNumber = missionNumber;
         this.interventionNumber = interventionNumber;

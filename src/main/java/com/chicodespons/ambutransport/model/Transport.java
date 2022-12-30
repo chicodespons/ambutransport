@@ -12,9 +12,9 @@ public class Transport {
     @Id
     @SequenceGenerator(name="transport_seq", sequenceName = "transport_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transport_seq")
-    private long id;
-    private long missionNumber;
-    private long interventionNumber;
+    private Long id;
+    private Long missionNumber;
+    private Long interventionNumber;
     private LocalDate interventionDate;
     private LocalDate registrationDate;
     @ManyToOne
@@ -25,7 +25,14 @@ public class Transport {
 
     }
 
-    public long getId() {
+    public Transport(Long interventionNumber, LocalDate interventionDate, LocalDate registrationDate, TeamMember teamMember) {
+        this.interventionNumber = interventionNumber;
+        this.interventionDate = interventionDate;
+        this.registrationDate = registrationDate;
+        this.teamMember = teamMember;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -33,7 +40,7 @@ public class Transport {
         this.id = id;
     }
 
-    public long getMissionNumber() {
+    public Long getMissionNumber() {
         return missionNumber;
     }
 
@@ -41,7 +48,7 @@ public class Transport {
         this.missionNumber = missionNumber;
     }
 
-    public long getInterventionNumber() {
+    public Long getInterventionNumber() {
         return interventionNumber;
     }
 

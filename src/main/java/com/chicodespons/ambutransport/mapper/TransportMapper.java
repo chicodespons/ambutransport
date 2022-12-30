@@ -2,7 +2,7 @@ package com.chicodespons.ambutransport.mapper;
 
 import com.chicodespons.ambutransport.dto.CreateTransportDto;
 import com.chicodespons.ambutransport.dto.TransportDto;
-import com.chicodespons.ambutransport.exceptions.InvalidTeamMember;
+import com.chicodespons.ambutransport.exceptions.InvalidTeamMemberException;
 import com.chicodespons.ambutransport.model.Transport;
 import com.chicodespons.ambutransport.repository.TeamMemberRepository;
 import org.springframework.stereotype.Component;
@@ -19,13 +19,13 @@ public class TransportMapper {
         this.teamMemberRepository = teamMemberRepository;
     }
 
-    public Transport mapCreateTransportDtotoTransport(CreateTransportDto CreateTransportDto) throws InvalidTeamMember {
+    public Transport mapCreateTransportDtotoTransport(CreateTransportDto CreateTransportDto) throws InvalidTeamMemberException {
         Transport transport = new Transport();
                transport.setInterventionNumber(CreateTransportDto.getInterventionNumber());
                transport.setInterventionDate(CreateTransportDto.getInterventionDate());
                transport.setRegistrationDate(CreateTransportDto.getRegistrationDate());
                transport.setTeamMember(teamMemberRepository.findById(CreateTransportDto.getTeamMemberId())
-                       .orElseThrow(()->new InvalidTeamMember("No valid team member has been given")));
+                       .orElseThrow(()->new InvalidTeamMemberException("No valid team member has been given")));
 
                return transport;
     }

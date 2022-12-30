@@ -1,20 +1,24 @@
 package com.chicodespons.ambutransport.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 import java.time.LocalDate;
 @Getter
 public class CreateTransportDto {
 
-    private long interventionNumber;
+    private Long interventionNumber;
     private LocalDate interventionDate;
     private LocalDate registrationDate;
-    private long teamMemberId;
+    @NotNull
+    @NotEmpty
+    private Long teamMemberId;
 
-    public CreateTransportDto(long interventionNumber, LocalDate interventionDate, LocalDate registrationDate, long teamMemberId) {
+    public CreateTransportDto(Long interventionNumber, LocalDate interventionDate, Long teamMemberId) {
         this.interventionNumber = interventionNumber;
         this.interventionDate = interventionDate;
-        this.registrationDate = registrationDate;
+        this.registrationDate = LocalDate.now();
         this.teamMemberId = teamMemberId;
     }
 }
