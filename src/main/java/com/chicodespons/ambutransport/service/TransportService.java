@@ -1,0 +1,60 @@
+package com.chicodespons.ambutransport.service;
+
+import com.chicodespons.ambutransport.dto.TransportDto;
+import com.chicodespons.ambutransport.mapper.TransportMapper;
+import com.chicodespons.ambutransport.model.Transport;
+import com.chicodespons.ambutransport.repository.TransportRepository;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Service
+public class TransportService {
+
+    private final TransportRepository transportRepository;
+    private final TransportMapper transportMapper;
+
+    public TransportService(TransportRepository transportRepository, TransportMapper transportMapper) {
+        this.transportRepository = transportRepository;
+        this.transportMapper = transportMapper;
+    }
+
+    public List<TransportDto> getAllTransports() {
+
+        List<Transport> transports = transportRepository.findAll();
+        return transportMapper.mapTranportToTransportDto(transports);
+
+    }
+
+    public TransportDto getTransportByMissionNumber(Long missionNumber) {
+
+        Transport transport = transportRepository.findByMissionNumber(missionNumber);
+        return transportMapper.mapTransportToTransportDto(transport);
+    }
+
+    public TransportDto getTransportByInterventionNumber(Long interventionNumber) {
+
+        Transport transport = transportRepository.findByInterventionNumber(interventionNumber);
+        return transportMapper.mapTransportToTransportDto(transport);
+    }
+
+    public List<TransportDto> getTransportByInterventionDate(LocalDate interventionDate) {
+
+        List<Transport> transports = transportRepository.findAllByInterventionDate(interventionDate);
+        return transportMapper.mapTranportToTransportDto(transports);
+
+    }
+
+    public List<TransportDto> getTransportByRegistrationDate(LocalDate registrationDate) {
+
+        List<Transport> transports = transportRepository.findAllByRegistrationDate(registrationDate);
+        return transportMapper.mapTranportToTransportDto(transports);
+    }
+
+    public List<TransportDto> getTransportByTeamMemberId(Long teamMemberId) {
+
+        List<Transport> transports = transportRepository.findAllByTeamMemberId(teamMemberId);
+        return transportMapper.mapTranportToTransportDto(transports);
+    }
+}
