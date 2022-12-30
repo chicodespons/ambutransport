@@ -2,7 +2,9 @@ package com.chicodespons.ambutransport.service;
 
 import com.chicodespons.ambutransport.dto.CreateTransportDto;
 import com.chicodespons.ambutransport.dto.TransportDto;
+import com.chicodespons.ambutransport.dto.UpdateTransportDto;
 import com.chicodespons.ambutransport.exceptions.InvalidTeamMemberException;
+import com.chicodespons.ambutransport.exceptions.UnvalidTransportIdException;
 import com.chicodespons.ambutransport.mapper.TransportMapper;
 import com.chicodespons.ambutransport.model.Transport;
 import com.chicodespons.ambutransport.repository.TransportRepository;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -75,4 +78,18 @@ public class TransportService {
         transportRepository.save(transport);
         return createTransportDto;
     }
+
+    public UpdateTransportDto updateTransport(long id, UpdateTransportDto updateTransportDto) throws UnvalidTransportIdException {
+
+        Transport transport = transportRepository.findById(id).orElseThrow(()-> new UnvalidTransportIdException("Transport for given id is not found"));
+        transport.setInterventionNumber(updateTransportDto.getInterventionNumber());
+        if(updateTransportDto.getInterventionDate() != null){
+            transport.setInterventionDate(updateTransportDto.getInterventionDate());
+        }
+
+        transportRepository.save(transport);
+        return updateTransportDto;
+
+    }
+
 }

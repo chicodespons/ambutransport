@@ -2,7 +2,9 @@ package com.chicodespons.ambutransport.controller;
 
 import com.chicodespons.ambutransport.dto.CreateTransportDto;
 import com.chicodespons.ambutransport.dto.TransportDto;
+import com.chicodespons.ambutransport.dto.UpdateTransportDto;
 import com.chicodespons.ambutransport.exceptions.InvalidTeamMemberException;
+import com.chicodespons.ambutransport.exceptions.UnvalidTransportIdException;
 import com.chicodespons.ambutransport.service.TransportService;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
@@ -33,7 +35,8 @@ public class TransportController {
     public List<TransportDto> getAllFinalTransports(){
         return transportService.getAllFinalTransports();
     }
-    //these are final transports because only a final transport gets a missionNumber
+
+    //these are final transports because only final transport gets a missionNumber
     @GetMapping(path = "/mission/{missionNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TransportDto getTransportByMissionNumber(@PathVariable Long missionNumber){
         return transportService.getTransportByMissionNumber(missionNumber);
@@ -67,7 +70,12 @@ public class TransportController {
         return transportService.createTransport(createTransportDto);
     }
 
-    //UpdateMappings
+    //PutMapping
+    //User can only update before final check, after final check the missionnumber is added, this can never be updated
+    @PutMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UpdateTransportDto updateTransport(@PathVariable long id,@RequestBody UpdateTransportDto updateTransportDto) throws UnvalidTransportIdException {
+        return transportService.updateTransport(id, updateTransportDto);
+    }
 
 
 
