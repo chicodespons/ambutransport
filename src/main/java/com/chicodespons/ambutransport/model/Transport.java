@@ -1,12 +1,7 @@
 package com.chicodespons.ambutransport.model;
 
-import com.chicodespons.ambutransport.model.trajectory.Trajectory;
 import com.chicodespons.ambutransport.model.transportteam.TeamMember;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.Objects;
 
